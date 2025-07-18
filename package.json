@@ -8,8 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "seed": "ts-node scripts/seed.ts",
-    "postinstall": "prisma generate"
+    "seed": "ts-node scripts/seed.ts"
   },
   "repository": {
     "type": "git",
