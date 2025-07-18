@@ -1,0 +1,58 @@
+{
+  "name": "parafi-tokenvesting-mvp",
+  "version": "0.1.0",
+  "description": "An interactive web-app for ParaFi's internal teams to model token vesting schedules and estimate locked position value.",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "seed": "ts-node scripts/seed.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewwoop/parafi-tokenvesting-mvp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/matthewwoop/parafi-tokenvesting-mvp/issues"
+  },
+  "homepage": "https://github.com/matthewwoop/parafi-tokenvesting-mvp#readme",
+  "dependencies": {
+    "@prisma/client": "^6.12.0",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-popover": "^1.1.14",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@types/react-datepicker": "^7.0.0",
+    "axios": "^1.10.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.525.0",
+    "next": "^15.4.1",
+    "react": "^19.1.0",
+    "react-datepicker": "^8.4.0",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.60.0",
+    "recharts": "^3.1.0",
+    "sass": "^1.89.2",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@shadcn/ui": "^0.0.4",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^24.0.14",
+    "@types/react": "^19.1.8",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "prisma": "^6.12.0",
+    "tailwindcss": "^4.1.11",
+    "ts-node": "^10.9.2",
+    "tw-animate-css": "^1.3.5",
+    "typescript": "^5.8.3"
+  }
+}
