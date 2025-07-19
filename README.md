@@ -7,8 +7,8 @@ A comprehensive web application for tracking and visualizing unlocking token pos
 - **Real-time Market Data**: Integrates with CoinGecko API for live token prices and volatility
 - **DLOM Calculations**: Uses Black-Scholes option pricing to calculate fair value discounts
 - **Flexible Vesting Schedules**: Support for cliffs, daily, weekly, and monthly unlock patterns
-- **Interactive Dashboard**: Charts and tables showing portfolio composition and unlock timelines
-- **Comprehensive Metrics**: Track unlocked/locked amounts, current values, and discount percentages
+- **Schedule Visualizations**: Charts and tables showing portfolio composition and unlock timelines
+- **Position Metrics**: Track unlocked/locked amounts, current values, and discount percentages
 
 ## Supported Tokens
 
@@ -128,14 +128,58 @@ The application supports various vesting patterns:
 - **Market Data**: CoinGecko API integration
 - **Option Pricing**: Black-Scholes implementation
 
-## Contributing
+## Reflections
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+### 1. What assumptions did you make, and how did you validate them?
 
-## License
+- **Market Data Availability**: Assumed CoinGecko API would be reliable, implemented fallback to stubbed data if API failed.
+- **Premium Calculation**: Assumed Black-Scholes w/ risk-free rate of 5% provided a sufficient estimation of ATM put premium, used current 10Y Treasury rate and ran test calculations to confirm reasonable DLOM values.
+- **Token Price History**: Assumed vesting tokens have +1 year of price data
 
-ISC License
+### 2. What was the hardest technical or product hurdle and how did you tackle it?
+
+**Modeling & Representing Unlock Events**
+- **Challenges**: Corraling the space of possible vesting schedules, creating a simple data model, composing an intuitive UX/UI for the form
+- **Approach**: Developed an initial feel for them in Excel, selected an initial scope to cover with cliffs and recurring intervals, researched various form examples to mock up basic wireframes, incorporated real-time input validation with visual feedback, helpful error messages, and dynamic button states that guide users through the process.
+
+### 3. What trade-offs or limitations did you accept?
+
+- **API Dependency**: Relying on external CoinGecko API for market data
+- **Asset Support**: Supporting a fixed set of tokens rather than an arbitrary ticker
+- **Vesting Schedules**: Focusing on cliffs and date-based unlocks
+- **Form Complexity**: More complex form for better validation vs simpler but less robust approach
+- **Single-User Support**: Simpler approach for demo purposes
+
+
+### 4. Are there vulnerabilities or operational concerns in your approach?
+
+**Security Vulnerabilities:**
+- **Input Validation**: Limited front-end input and server-side validation of vesting schedule data
+- **DB Access**: No authentication or authorization for API endpoints
+
+**Operational Concerns:**
+- **API Rate Limits**: CoinGecko has rate limits that could affect production usage
+- **Scalability**: Deployed on basic free tiers for Vercel & Prisma
+- **DB Backups**: No automated database backup solution
+
+**Solution Strategies:**
+- Implement server-side validation
+- Move DLOM calc off the front-end
+- Add authentication and authorization
+- Implement API rate limiting
+- Add database constraints and validation
+
+### 5. What additional features would you implement with more time?
+
+**Immediate Enhancements (1-2 weeks):**
+- **Editing & Deleting Schedules**: Enable the user to fully manage vesting schedules via the app
+- **Improve UI**: Fix chart issues, improve vesting schedules table
+- **Expand Schedule Types**: Support duration-based vesting schedules and revamp form flow
+- **Authentication & Authorization**: User login, role-based access, audit trails
+
+**Medium-term Features (1-2 months):**
+- **Exporting Schedules**: Export vesting schedules w/ token amounts, discounts, etc. via CSV/Excel
+- **Expand Assets**: Handle arbitrary ticker/contract address, support DEX markets
+- **Email Notifications**: Alerts for upcoming unlock events
+- **Advanced DLOM Models**: Support for different volatility models and risk-free rates
+- **Advanced Reporting**: Role-based UI/UX to support the unique needs of separate internal teams
