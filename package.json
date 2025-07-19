@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postinstall": "prisma generate --data-proxy",
     "start": "next start",
     "seed": "ts-node scripts/seed.ts"
   },
