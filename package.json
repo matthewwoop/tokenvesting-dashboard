@@ -1,5 +1,5 @@
 {
-  "name": "parafi-tokenvesting-mvp",
+  "name": "parafi-tokenvesting-dashboard",
   "version": "0.1.0",
   "description": "An interactive web-app for ParaFi's internal teams to model token vesting schedules and estimate locked position value.",
   "private": true,
@@ -13,16 +13,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matthewwoop/parafi-tokenvesting-mvp.git"
+    "url": "git+https://github.com/matthewwoop/parafi-tokenvesting-dashboard.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/matthewwoop/parafi-tokenvesting-mvp/issues"
+    "url": "https://github.com/matthewwoop/parafi-tokenvesting-dashboard/issues"
   },
-  "homepage": "https://github.com/matthewwoop/parafi-tokenvesting-mvp#readme",
+  "homepage": "https://github.com/matthewwoop/parafi-tokenvesting-dashboard#readme",
   "dependencies": {
     "@prisma/client": "^6.12.0",
     "@radix-ui/react-label": "^2.1.7",
