@@ -38,12 +38,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Calculate current unlock status
       const now = new Date();
       const futureEvents = schedule.unlockEvents
-        .filter((event: UnlockEvent) => new Date(event.unlockDate) > now)
-        .sort((a: UnlockEvent, b: UnlockEvent) => new Date(a.unlockDate).getTime() - new Date(b.unlockDate).getTime());
+        .filter((event) => new Date(event.unlockDate) > now)
+        .sort((a, b) => new Date(a.unlockDate).getTime() - new Date(b.unlockDate).getTime());
 
       const unlockedQuantity = schedule.unlockEvents
-        .filter((event: UnlockEvent) => new Date(event.unlockDate) <= now)
-        .reduce((sum: number, event: UnlockEvent) => sum + event.amount, 0);
+        .filter((event) => new Date(event.unlockDate) <= now)
+        .reduce((sum: number, event) => sum + event.amount, 0);
 
       const nextUnlockDate = futureEvents.length > 0 ? new Date(futureEvents[0].unlockDate) : now;
 
@@ -58,7 +58,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       );
 
       // Calculate detailed results for each unlock event
-      const results = schedule.unlockEvents.map((ev: UnlockEvent) => {
+      const results = schedule.unlockEvents.map((ev) => {
         const timeToUnlock = Math.max(
           (new Date(ev.unlockDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24 * 365), 0
         );
@@ -82,7 +82,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           discountPercent: metrics.discountPercentage,
           discountedValue: metrics.discountedValue,
           resultsJson: {
-            metrics,
+            metrics: { ...metrics },
             results,
             marketData: {
               tokenSymbol,
